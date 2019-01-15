@@ -110,7 +110,7 @@ node + koa + mongodb/mysql + react
     |-home                  主页
     |-login                 登录
     |-user                    
-      |-user.js             跨越推广  
+      |-user.js             推广  
     |-team               
       |-team-cost.js        团费收益
       |-team-details.js     团员详情

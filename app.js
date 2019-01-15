@@ -18,22 +18,35 @@ app.use(bodyparser({
 }))
 app.use(json())
 app.use(logger())
-app.use(views(__dirname + '/statics/group-promote', {
+app.use(views(__dirname + '/statics/group-promote-static', {
     extension: 'html'
 }))
 
+// app.use(async (ctx, next) => {
+//     ctx.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+//     ctx.set('Access-Control-Allow-Methods', 'PUT,DELETE,POST,GET');
+//     ctx.set('Access-Control-Allow-Credentials', true);
+//     await next();
+// });
+
 // logger
 app.use(async (ctx, next) => {
+    // console.log(ctx)
     const start = new Date()
     await next()
     const ms = new Date() - start
     console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
-
+// app.use(async (ctx, next) => {
+//     if (ctx.method === 'OPTIONS') {
+//         ctx.body = '';
+//     }
+//     await next();
+// });
 // routes
 app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
-app.use(require('koa-static')(__dirname + '/statics/group-promote'))
+app.use(require('koa-static')(__dirname + '/statics/group-promote-static'))
 
 // error-handling
 app.on('error', (err, ctx) => {
