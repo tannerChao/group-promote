@@ -28,7 +28,7 @@ router.post('/register', async (ctx, next) => {
     let res = await user.register(ctx.request.body);
     console.log(res)
     ctx.response.type = 'application/json'
-    ctx.body = { code: 0 }
+    ctx.body = res
 })
 
 router.get('/bar', function (ctx, next) {

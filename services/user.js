@@ -12,8 +12,5 @@ module.exports.getUser = async (info) => {
 module.exports.register = async (info) => {
     const user = new User(info);
     let res = await user.getUser()
-    console.log(res)
-    if (res) {
-
-    }
+    return res
 }
