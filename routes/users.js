@@ -1,11 +1,11 @@
 const router = require('koa-router')()
-const config = require('../config/config')
+const config = require('../config')
 const user = require('../services/user')
 router.prefix('/methods/user')
 
 router.post('/login', async (ctx, next) => {
-    let res = await user.getUser({ 'username': 'Tracy McGrady' });
-    console.log(res, '------')
+    let res = await user.login(ctx.request.body);
+    console.log(ctx.request.body, '====', res)
     ctx.response.type = 'application/json'
     ctx.body = res
 })

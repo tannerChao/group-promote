@@ -18,7 +18,7 @@ module.exports.insert = (info) => {
     });
 
 }
-module.exports.select = (info) => {
+module.exports.getUser = (info) => {
     return User.find(info, (err, res) => {
         if (err) {
             return Error(err)
